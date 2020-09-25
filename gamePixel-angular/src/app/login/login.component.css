@@ -1,0 +1,24 @@
+
+#login-form {
+    align-content: center;
+    text-align: center;
+    margin-top: 15%;
+}
+.form-group{
+    align-content: flex-start;
+    padding-top: 10px;
+}
+#passwordLabel{
+    width: 100%;
+    margin-right: 50px;
+
+}
+a:link{
+    color: blue; 
+}
+a:hover {
+    color: darkblue;
+}
+a:visited{
+    color:purple;
+}
