@@ -1,6 +1,5 @@
 package com.gamepixel.api.controller;
 
-import java.net.URI;
 import java.util.List;
 
 import com.gamepixel.api.models.Gamer;
@@ -10,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /**
  * POST - add gamer to db GET - retrieving all gamers GET - retrieving specified
@@ -26,7 +25,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping(value = "/gamers")
-public class GamerController {
+public class AuthController {
     /**
      * Optimization add Lombok annotation (@AllArgsConstructor) Remove @Autowired
      * since Lombok Remove Constructor remove all requestmapping Use Response Entity
@@ -35,28 +34,31 @@ public class GamerController {
     @Autowired
     GamerService gamerService;
 
-    public GamerController(GamerService gamerService) {
+    public AuthController(GamerService gamerService) {
         this.gamerService = gamerService;
     }
 
-    @GetMapping(consumes = "application/json", produces = "application/json")
+    @GetMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<List<Gamer>> getAllGamers() {
         return ResponseEntity.status(HttpStatus.OK).body(gamerService.retrieveAllGamers());
     }
 
-    @RequestMapping(value = "/gamers/{user_id}", method = RequestMethod.GET)
-    public Gamer getGamerById(@RequestParam(value = "user_id") Integer user_id) {
-        return gamerService.retrieveById(user_id);
+    @GetMapping(value = "/gamers/{user_id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+    public ResponseEntity<Gamer> getGamerById(@RequestParam(value = "user_id") Integer user_id) {
+        return ResponseEntity.status(HttpStatus.OK).body(gamerService.retrieveById(user_id));
     }
 
-    @RequestMapping(value = "/gamers/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Gamer addGamer(@RequestBody Gamer newGamer) {
-        return gamerService.createGamer(newGamer);
+    @PostMapping(value = "/gamers/add", consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {
+            MediaType.APPLICATION_JSON_VALUE })
+    public ResponseEntity<Gamer> addGamer(@RequestBody Gamer newGamer) {
+        gamerService.createGamer(newGamer);
+        return new ResponseEntity<Gamer>(newGamer, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/gamers/{user_id}", method = RequestMethod.DELETE)
-    public void deleteGamerFromDb(@RequestParam(value = "user_id") Integer user_id) {
+    @DeleteMapping(value = "gamers/{user_id}", consumes = { MediaType.APPLICATION_JSON_VALUE })
+    public ResponseEntity<String> deleteGamerById(@RequestParam(value = "user_id") Integer user_id) {
         gamerService.deleteGamer(user_id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }
