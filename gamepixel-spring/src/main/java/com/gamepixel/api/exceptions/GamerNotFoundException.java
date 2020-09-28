@@ -4,6 +4,11 @@ package com.gamepixel.api.exceptions;
 
 public class GamerNotFoundException extends RuntimeException {
     /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Whenever changing project version, change the serialUID
      * 
      */

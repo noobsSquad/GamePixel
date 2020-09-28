@@ -32,8 +32,9 @@ public class GamerService {
                 .orElseThrow(() -> new GamerNotFoundException("Cannot find user by their id"));
     }
 
-    public Gamer createGamer(Gamer newGamer) {
-        return this.gamerRepo.save(newGamer);
+    public boolean createGamer(Gamer newGamer) {
+        this.gamerRepo.save(newGamer);
+        return true;
     }
 
     public void deleteGamer(Integer user_id) {
