@@ -1,18 +1,68 @@
 package com.gamepixel.api.security;
 
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import io.jsonwebtoken.ExpiredJwtException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+import org.springframework.web.filter.OncePerRequestFilter;
 
-public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-    /***
-     * Works like Servlet filters
-     * Sets the authentication manager which was configured to override configure(authenticationManagerBuilder auth)
-     * @param authenticationManager
-     */
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager){
-        this.setAuthenticationManager(authenticationManager);
-        // This method set a URL preference for the authentication end point
-        setFilterProcessesUrl("/api/login");
+@Component
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
+
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil; //jwt provider
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain filterChain) throws ServletException, IOException {
+        String username="";
+        String jwt = getJwtFromRequest(request);
+        try{
+            username = jwtTokenUtil.getUsernameFromToken(jwt);
+        }catch(IllegalArgumentException e){
+            System.out.println("Unable to get JWT Token");
+        }catch(ExpiredJwtException e){
+            System.out.println("JWT Token has expired");
+        }
+        // check if null not empty and SecurityContext is empty
+        if(StringUtils.hasText(username) && SecurityContextHolder.getContext().getAuthentication()== null){
+            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+            //if token is valid configure Spring security
+            if(jwtTokenUtil.validateToken(jwt,userDetails)) {
+                UsernamePasswordAuthenticationToken authentication =
+                        new UsernamePasswordAuthenticationToken(userDetails,
+                                null,
+                                userDetails.getAuthorities());
+                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                // After setting the Authentication in the context,
+                // specify that the current user is authenticated
+                // Spring Security configurations successfully
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            }
+        }
+        filterChain.doFilter(request,response);
+    }
+
+    private String getJwtFromRequest(HttpServletRequest request) {
+        String bearerToken = request.getHeader("Authorization");
+        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
+            return bearerToken.substring(7); // this is because all Bearer Tokens starts with `Bearer `
+        }
+        logger.warn("JWT Token does not begin with Bearer String");
+        return bearerToken;
     }
 }

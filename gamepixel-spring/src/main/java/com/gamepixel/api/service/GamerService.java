@@ -23,21 +23,21 @@ public class GamerService {
     @Autowired
     GamerRepo gamerRepo;
 
-    public List<Gamer> retrieveAllGamers() {
-        return this.gamerRepo.findAll();
-    }
-
-    public Gamer retrieveById(Integer user_id) {
-        return this.gamerRepo.findById(user_id)
-                .orElseThrow(() -> new GamerNotFoundException("Cannot find user by their id"));
-    }
-
-    public boolean createGamer(Gamer newGamer) {
-        this.gamerRepo.save(newGamer);
-        return true;
-    }
-
-    public void deleteGamer(Integer user_id) {
-        this.gamerRepo.deleteById(user_id);
-    }
+//    public List<Gamer> retrieveAllGamers() {
+//        return this.gamerRepo.findAll();
+//    }
+//
+//    public Gamer retrieveById(Integer user_id) {
+//        return this.gamerRepo.findById(user_id)
+//                .orElseThrow(() -> new GamerNotFoundException("Cannot find user by their id"));
+//    }
+//
+//    public boolean createGamer(Gamer newGamer) {
+//        this.gamerRepo.save(newGamer);
+//        return true;
+//    }
+//
+//    public void deleteGamer(Integer user_id) {
+//        this.gamerRepo.deleteById(user_id);
+//    }
 }
