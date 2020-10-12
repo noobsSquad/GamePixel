@@ -1,1 +1,77 @@
-<p>signup works!</p>
+<h1 class="header">Register</h1>
+
+<div class="container">
+  <!--Form Fields(row)-->
+  <form>
+    <div class="form-row justify-content-center">
+      <div class="form-group col-md-3 col-lg-3">
+        <label for="first-name">First Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name1"
+          placeholder="Enter First Name"
+          [formControl]="this.user.firstName"
+        />
+      </div>
+      <div class="form-group col-md-3">
+        <label for="last-name">Last Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name2"
+          placeholder="Enter Last Name"
+          [formControl]="this.user.lastName"
+        />
+      </div>
+    </div>
+    <div class="form-group offset-md-3">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        class="form-control"
+        id="emailId"
+        placeholder="Enter Email"
+        [formControl]="this.user.email"
+      />
+    </div>
+    <div class="form-group offset-md-3">
+      <label for="user-name">Username:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="userId"
+        placeholder="Enter Username"
+        [formControl]="this.user.userName"
+      />
+    </div>
+    <div class="form-group offset-md-3">
+      <label for="password1">Password:</label>
+      <input
+        type="password"
+        class="form-control"
+        id="pwId1"
+        placeholder="Enter Password"
+        [formControl]="this.user.password1"
+      />
+    </div>
+    <div class="form-group offset-md-3">
+      <label for="password2">Re-enter Password:</label>
+      <input
+        type="password"
+        class="form-control"
+        id="pwId2"
+        placeholder="Re-enter Password"
+        [formControl]="this.user.password2"
+      />
+    </div>
+  </form>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="this.userAccount.valid"
+  >
+    Create Account
+  </button>
+  <a href="/login">Already have an account?</a>
+</div>
