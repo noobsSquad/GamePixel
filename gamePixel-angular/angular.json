@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gamepixel-angular": {
+    "gamePixel-angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
