@@ -7,11 +7,11 @@ import { LoginRequestPayload } from './login-request.payload';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-  loginRequestPayload: LoginRequestPayload;
-  registerSuccessMessage: string;
-  isError: boolean;
+ export class LoginComponent implements OnInit {
+  // loginForm: FormGroup;
+  // loginRequestPayload: LoginRequestPayload;
+  // registerSuccessMessage: string;
+  // isError: boolean;
   constructor() { }
 
   ngOnInit(): void {
