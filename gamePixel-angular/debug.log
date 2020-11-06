@@ -1,0 +1,8 @@
+[1030/133407.125:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1031/121846.028:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1102/110807.722:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1102/130839.404:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1102/132151.020:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1102/153354.443:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\tomas\AppData\Local\Temp\karma-82042172\Crashpad\attachments\e495613b-ae34-4000-b24e-cbef21d6815f: The system cannot find the path specified. (0x3)
+[1102/153354.490:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1102/153354.490:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
