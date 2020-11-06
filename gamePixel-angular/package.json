@@ -22,6 +22,7 @@
     "@popperjs/core": "^2.5.3",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
+    "ngx-webstorage": "^6.0.0",
     "object-path": "^0.11.5",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.3",

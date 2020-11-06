@@ -1,10 +1,10 @@
 <div id="login-section">
   <div class="row justify-content-center">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
       <div class="card">
         <div class="card-header">
-          <h4>Login</h4>
+          <h4 class="text-center">Login</h4>
         </div>
         <div class="card-body">
           <form [formGroup]="loginForm" (ngSubmit)="login()">
@@ -30,7 +30,7 @@
             </div>
             <!--fix this for smaller screen -->
             <span class="col-md-6 col-sm-6 offset-md-4 offset-1"> 
-              <button type="submit" class="btn btn-success">Login</button>
+              <button type="submit" class="btn btn-primary">Login</button>
             </span>
             <span id="newUser" class="row col-md-6 col-sm-6 offset-md-4">New User? &nbsp; <a href="/signup">SIGN UP</a>
             </span>
@@ -40,13 +40,13 @@
                 account</p>
             </div>
             <div class="login-failed" [ngStyle]="{'background-color': 'green'}"
-              *ngIf="this.registerSuccessMessage.length > 0">
-              <p class="register-success-text">{{registerSuccessMessage}}</p>
+              *ngIf="this.loggedInSuccessMessage.length > 0">
+              <p class="register-success-text">{{loggedInSuccessMessage}}</p>
             </div>
           </form>
         </div>
       </div>
     </div>
-    <div class="col-md-3"></div>
+    <div class="col-md-4"></div>
   </div>
 </div>
