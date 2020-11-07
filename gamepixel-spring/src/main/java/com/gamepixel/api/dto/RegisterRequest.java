@@ -14,8 +14,8 @@ public class RegisterRequest {
     private String email;
     private String username;
     // ADD THIS FIELDS
-//    private String firstName;
-//    private String lastName;
+    private String firstName;
+    private String lastName;
     private String password;
 
 }

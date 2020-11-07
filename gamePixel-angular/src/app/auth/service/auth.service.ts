@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import {HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { EventEmitter, Injectable, Output } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { LoginRequestPayload } from '../login/login-request.payload';
 import { LoginResponse } from '../login/login-response.payload';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -11,17 +11,34 @@ import { map, tap} from 'rxjs/operators';
 })
 export class AuthService {
 
+  @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
+  @Output() username: EventEmitter<string> = new EventEmitter();
+
   constructor(private httpClient: HttpClient,
     private localStorage: LocalStorageService) { }
 
-
+    //signup() function will go here
+    /**
+     * json returned: 
+     * json{
+     * authenticationToken: 'jwt';
+     * username: 'username';
+     * jwtTimer: 'jwtTimer';
+     * }
+     * authenticationToken: 
+     * 
+     */
 
 
   login(loginRequestPayload: LoginRequestPayload):Observable<boolean>{
     return this.httpClient.post<LoginResponse>('http://localhost:8080/api/auth/login',
     loginRequestPayload).pipe(map(data => {
+      this.localStorage.store('authenticationToken', data.authenticationToken);
 
-    }))
+      this.loggedIn.emit(true); //Notifies if the user is loggedIn
+      // this.username.emit(data.username); //add the HTTP RESPONSE TO INCLUDE THE USERNAME OF USER
+      return true;
+      }));
   }
 
 

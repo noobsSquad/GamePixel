@@ -1,4 +1,6 @@
-
+#login-section {
+  margin-top: 200px;
+}
 #login-form {
     align-content: center;
     text-align: center;
@@ -13,12 +15,14 @@
     margin-right: 50px;
 
 }
-a:link{
-    color: blue; 
-}
-a:hover {
+
+a:link {
+    color: blue;
+  }
+  a:hover {
     color: darkblue;
-}
-a:visited{
-    color:purple;
-}
+  }
+  a:visited {
+    color: purple;
+  }
+  

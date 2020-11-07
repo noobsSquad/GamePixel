@@ -23,7 +23,7 @@ import java.time.Instant;
 public class Gamer {
     @Column
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long user_id;
 
     @Column(name = "first_name")
@@ -35,11 +35,11 @@ public class Gamer {
     @Column(name = "email")
     private String email;
 
-//    @Column(name = "user_name")
+    @Column(name = "user_name")
     private String username;
 
     @Column(name = "password")
     private String password;
 
-    private Instant createdOn;
+    // private Instant createdOn;
 }
