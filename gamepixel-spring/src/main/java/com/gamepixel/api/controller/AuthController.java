@@ -35,46 +35,60 @@ public class AuthController {
      * since Lombok Remove Constructor remove all requestmapping Use Response Entity
      * for controller
      */
-//    private final GamerService gamerService;
+    // private final GamerService gamerService;
     private final AuthService authService;
     private final AuthenticationManager authenticationManager;
     private final JwtTokenUtil jwtTokenUtil;
     private final JwtUserDetailsService userDetailsService;
 
     @PostMapping("/signup")
-    public ResponseEntity<String> signUp(@RequestBody RegisterRequest registerRequest){
+    public ResponseEntity<String> signUp(@RequestBody RegisterRequest registerRequest) {
         authService.signUp(registerRequest);
         return new ResponseEntity<>("User Registered Successfully", HttpStatus.OK);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest){
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
 
         return authService.login(loginRequest);
+        /*
+         * @PostMapping(value = "/gamers/add", consumes = {
+         * MediaType.APPLICATION_JSON_VALUE }, produces = {
+         * MediaType.APPLICATION_JSON_VALUE }) public ResponseEntity<Object>
+         * addGamer(@RequestBody Gamer newGamer) { gamerService.createGamer(newGamer);
+         * return new ResponseEntity<Object>(newGamer, HttpStatus.OK);
+         */
     }
     // **********************************************
-//    @GetMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE })
-//    public ResponseEntity<List<Gamer>> getAllGamers() {
-//        return ResponseEntity.status(HttpStatus.OK).body(gamerService.retrieveAllGamers());
-//    }
-//
-//    @GetMapping(value = "/gamers/{user_id}", produces = { MediaType.APPLICATION_JSON_VALUE })
-//    public ResponseEntity<Gamer> getGamerById(@RequestParam(value = "user_id") Integer user_id) {
-//        return ResponseEntity.status(HttpStatus.OK).body(gamerService.retrieveById(user_id));
-//    }
-//
-//    @PostMapping(value = "/gamers/add", consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {
-//            MediaType.APPLICATION_JSON_VALUE })
-//    public ResponseEntity<Gamer> addGamer(@RequestBody Gamer newGamer) {
-//        gamerService.createGamer(newGamer);
-//        return new ResponseEntity<Gamer>(newGamer, HttpStatus.OK);
-//    }
-//
-//    @DeleteMapping(value = "gamers/{user_id}", consumes = { MediaType.APPLICATION_JSON_VALUE })
-//    public ResponseEntity<String> deleteGamerById(@RequestParam(value = "user_id") Integer user_id) {
-//        gamerService.deleteGamer(user_id);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
-
+    // @GetMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {
+    // MediaType.APPLICATION_JSON_VALUE })
+    // public ResponseEntity<List<Gamer>> getAllGamers() {
+    // return
+    // ResponseEntity.status(HttpStatus.OK).body(gamerService.retrieveAllGamers());
+    // }
+    //
+    // @GetMapping(value = "/gamers/{user_id}", produces = {
+    // MediaType.APPLICATION_JSON_VALUE })
+    // public ResponseEntity<Gamer> getGamerById(@RequestParam(value = "user_id")
+    // Integer user_id) {
+    // return
+    // ResponseEntity.status(HttpStatus.OK).body(gamerService.retrieveById(user_id));
+    // }
+    //
+    // @PostMapping(value = "/gamers/add", consumes = {
+    // MediaType.APPLICATION_JSON_VALUE }, produces = {
+    // MediaType.APPLICATION_JSON_VALUE })
+    // public ResponseEntity<Gamer> addGamer(@RequestBody Gamer newGamer) {
+    // gamerService.createGamer(newGamer);
+    // return new ResponseEntity<Gamer>(newGamer, HttpStatus.OK);
+    // }
+    //
+    // @DeleteMapping(value = "gamers/{user_id}", consumes = {
+    // MediaType.APPLICATION_JSON_VALUE })
+    // public ResponseEntity<String> deleteGamerById(@RequestParam(value =
+    // "user_id") Integer user_id) {
+    // gamerService.deleteGamer(user_id);
+    // return new ResponseEntity<>(HttpStatus.OK);
+    // }
 
 }
