@@ -6,7 +6,6 @@ package com.gamepixel.api.controller;
 // import java.util.Optional;
 // import com.gamepixel.api.models.Gamer;
 // import com.gamepixel.api.service.GamerService;
-import com.gamepixel.api.service.GamerService;
 
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -57,9 +56,6 @@ public class AuthControllerTest {
     // }
 
     AuthController gamerController;
-
-    @Mock
-    GamerService gamerService;
 
     // @Test
     /*

@@ -1,20 +1,13 @@
 package com.gamepixel.api.controller;
 
-import java.util.List;
-
 import com.gamepixel.api.security.JwtTokenUtil;
-import com.gamepixel.api.dto.AuthenticationResponse;
 import com.gamepixel.api.dto.LoginRequest;
 import com.gamepixel.api.dto.RegisterRequest;
-import com.gamepixel.api.models.Gamer;
 import com.gamepixel.api.service.AuthService;
-import com.gamepixel.api.service.GamerService;
 
 import com.gamepixel.api.service.JwtUserDetailsService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.*;
