@@ -19,7 +19,7 @@ import java.time.Instant;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Gamers")
+@Table(name = "gamers")
 public class Gamer {
     @Column
     @Id
@@ -41,5 +41,6 @@ public class Gamer {
     @Column(name = "password")
     private String password;
 
+    // @Column(name = "gamer_created")
     // private Instant createdOn;
 }
