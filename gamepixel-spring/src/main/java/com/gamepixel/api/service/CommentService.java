@@ -48,7 +48,8 @@ public class CommentService {
         // required: create mail service layer first
     }
 
-    // deleting comment from post
+    // delete comment from post
 
-    // editing comment from post
+    // edit comment from post
+
 }
