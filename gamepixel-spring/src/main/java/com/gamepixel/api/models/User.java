@@ -4,27 +4,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.Instant;
+import java.util.UUID;
 
-/**
- * Gamer Entity + user_id + firstName + lastName + email + username + password
- */
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "gamers")
-public class Gamer {
+@Table(name = "users")
+public class User {
     @Column
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long Id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -35,12 +29,12 @@ public class Gamer {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "user_name")
+    @Column(unique = true)
     private String username;
 
-    @Column(name = "password")
     private String password;
 
-    // @Column(name = "gamer_created")
-    // private Instant createdOn;
+    @Column(name = "user_created")
+    private Instant createdOn;
+
 }

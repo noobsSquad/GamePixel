@@ -25,15 +25,14 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "review")
-    private String review;
+    private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Post post;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Gamer gamer;
+    private User user;
 
-    private Instant createdAt;
+    private Instant createdOn;
 
 }

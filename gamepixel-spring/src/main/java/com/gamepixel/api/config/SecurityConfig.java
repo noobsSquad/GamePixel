@@ -30,30 +30,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-//        httpSecurity
-//                .antMatcher("/**")
-//                .authorizeRequests()
-//                .antMatchers("/api/auth/**")
-//                .permitAll()
-//                .and()
-//                .authorizeRequests()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin().permitAll();
-        httpSecurity.csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/api/auth/**")
-                .permitAll()
-                .anyRequest()
-                .authenticated();
-        //NEED TO FIX THIS
-//        httpSecurity
-//                .csrf().disable()
-//                .authorizeRequests().antMatchers("/api/auth/**").permitAll().anyRequest().authenticated();
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .csrf().disable()
+                .authorizeRequests().antMatchers("/api/auth/*").permitAll()
+                .anyRequest().authenticated();
 
-
-        httpSecurity.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtAuthenticationFilter,
+                UsernamePasswordAuthenticationFilter.class);
     }
 
     /***
@@ -63,12 +47,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        Hard Coded:
-//        auth
-//                .inMemoryAuthentication()
-//                .withUser("TomasChavez")
-//                .password(passwordEncoder().encode("12345")).roles("USER");
-
         auth.userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
     }

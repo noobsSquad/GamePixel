@@ -3,10 +3,10 @@ package com.gamepixel.api.service;
 import java.util.List;
 
 import com.gamepixel.api.dto.CommentDto;
-import com.gamepixel.api.models.Gamer;
+import com.gamepixel.api.models.User;
 import com.gamepixel.api.repository.CommentRepository;
-import com.gamepixel.api.repository.GamerRepository;
 
+import com.gamepixel.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ public class CommentService {
     @Autowired
     CommentRepository commentRepository;
 
-    GamerRepository gamerRepository;
+    UserRepository userRepository;
 
     // save comment to db
     public void saveComment(CommentDto commentDto) {
@@ -44,7 +44,7 @@ public class CommentService {
     }
 
     // send mail notification to email
-    private void sendCommentNotification(String message, Gamer gamer) {
+    private void sendCommentNotification(String message, User gamer) {
         // required: create mail service layer first
     }
 

@@ -40,7 +40,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
         // check if null not empty and SecurityContext is empty
         if(StringUtils.hasText(username) && SecurityContextHolder.getContext().getAuthentication()== null){
-            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+            UserDetails userDetails = userDetailsService.loadUserByUsername(username);// BEARER TOKEN: HEADER.CLAIMS.KEY.
             //if token is valid configure Spring security
             if(jwtTokenUtil.validateToken(jwt,userDetails)) {
                 UsernamePasswordAuthenticationToken authentication =
