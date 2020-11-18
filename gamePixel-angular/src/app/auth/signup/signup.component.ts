@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { throwError } from 'rxjs';
+import { AuthService } from '../service/auth.service';
+import { SignUpRequestPayload } from './signup-request.payload';
 
 @Component({
   selector: 'app-signup',
@@ -9,37 +13,47 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class SignupComponent implements OnInit {
   PASSWORD_MAX_LENGTH = 8;
 
-  userAccount: FormGroup;
+  signupForm: FormGroup;
+  signUpPayload: SignUpRequestPayload;
+  flag: boolean;
+  message: string;
 
-  user = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    userName: '',
-    password1: '',
-    password2: '',
+  constructor(private authService: AuthService, private router:Router,
+    private activatedRoute: ActivatedRoute){
+    this.signUpPayload = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      username: '',
+      password: ''
+    }
   };
 
-  submit = false;
-  constructor(){
-    
-  };
-
-  /*setup form model for user account */
-  configForm(): void {
-    this.userAccount = new FormGroup({ 
-      firstName: new FormControl(this.user.firstName, [Validators.required]),
-      lastName: new FormControl(this.user.lastName, [Validators.required]),
-      email: new FormControl(this.user.email, [Validators.required]),
-      userName: new FormControl(this.user.userName, [Validators.required]),
-      password1: new FormControl(this.user.password1, [Validators.required]),
-      password2: new FormControl(this.user.password2, [Validators.required]),
+  ngOnInit() {
+    this.signupForm = new FormGroup({
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      username: new FormControl('', Validators.required),
+      password: new FormControl('',Validators.required)
     });
   }
 
-  onCreateAccount(): void {
-    this.submit = true;
+  signup() {
+    this.signUpPayload.firstName = this.signupForm.get('firstName').value;
+    this.signUpPayload.lastName = this.signupForm.get('lastName').value;
+    this.signUpPayload.email = this.signupForm.get('email').value;
+    this.signUpPayload.username = this.signupForm.get('username').value;
+    this.signUpPayload.password = this.signupForm.get('password').value;
+    
+    this.authService.signup(this.signUpPayload)
+        .subscribe(data => {
+          this.flag = false;
+          this.router.navigateByUrl('');
+          this.message = "Sign Up Successful";
+        }, error => {
+          this.flag = true;
+          throwError(error);
+        }); 
   }
-
-  ngOnInit() {}
 }

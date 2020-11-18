@@ -1,8 +1,8 @@
 package com.gamepixel.api.controller;
 
 import com.gamepixel.api.security.JwtTokenUtil;
-import com.gamepixel.api.dto.LoginRequest;
-import com.gamepixel.api.dto.RegisterRequest;
+import com.gamepixel.api.dto.auth.LoginRequest;
+import com.gamepixel.api.dto.auth.RegisterRequest;
 import com.gamepixel.api.service.AuthService;
 
 import com.gamepixel.api.service.JwtUserDetailsService;

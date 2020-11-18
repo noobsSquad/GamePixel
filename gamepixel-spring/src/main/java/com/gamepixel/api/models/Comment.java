@@ -1,5 +1,7 @@
 package com.gamepixel.api.models;
 
+import java.time.Instant;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,5 +33,7 @@ public class Comment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Gamer gamer;
+
+    private Instant createdAt;
 
 }

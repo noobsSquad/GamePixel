@@ -8,11 +8,11 @@ import static org.mockito.Mockito.when;
 
 import java.util.Optional;
 
-import com.gamepixel.api.dto.RegisterRequest;
+import com.gamepixel.api.dto.auth.RegisterRequest;
 import com.gamepixel.api.exceptions.GamerExistsException;
 import com.gamepixel.api.mapper.SignUpMapper;
 import com.gamepixel.api.models.Gamer;
-import com.gamepixel.api.repository.GamerRepo;
+import com.gamepixel.api.repository.GamerRepository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,7 @@ public class AuthServiceTest {
     AuthService authService;
 
     @Mock
-    GamerRepo gamerRepo;
+    GamerRepository gamerRepository;
 
     Gamer mockGamer;
 
@@ -56,8 +56,8 @@ public class AuthServiceTest {
 
     @Test
     public void testSignUp() {
-        when(gamerRepo.findByUsername(anyString())).thenReturn(null);
-        when(gamerRepo.save(any(Gamer.class))).thenReturn(mockGamer);
+        when(gamerRepository.findByUsername(anyString())).thenReturn(null);
+        when(gamerRepository.save(any(Gamer.class))).thenReturn(mockGamer);
 
         Gamer mockGamer = SignUpMapper.INSTANCE.mapSignUp(gamerDto);
         assertNotNull(mockGamer);
@@ -67,7 +67,7 @@ public class AuthServiceTest {
     @Test
     public void testSignUp_throwsGamerExistException() throws GamerExistsException {
 
-        when(gamerRepo.findByUsername(anyString())).thenReturn(Optional.of(mockGamer));
+        when(gamerRepository.findByUsername(anyString())).thenReturn(Optional.of(mockGamer));
 
         gamerDto = new RegisterRequest();
         gamerDto.setFirstName("john");

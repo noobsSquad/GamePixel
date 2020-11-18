@@ -1,6 +1,7 @@
 package com.gamepixel.api.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.gamepixel.api.models.Comment;
 import com.gamepixel.api.models.Gamer;
