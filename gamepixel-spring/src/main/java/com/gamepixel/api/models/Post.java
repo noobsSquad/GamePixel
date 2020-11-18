@@ -1,5 +1,6 @@
 package com.gamepixel.api.models;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,27 +34,16 @@ public class Post {
     private String title;
 
     @Column(name = "post_desc")
-    private String desc;
+    private String postContent;
 
+    // Don't use JoinColumn to map; use @OneToMany
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
     // @JoinColumn(name = "comment_id")
     private List<Comment> comments = new ArrayList<>();
-
     // Instant createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Gamer gamer;
 
-    // add comment
-    public void addComment(Comment com) {
-        comments.add(com);
-        com.setPost(this);
-    }
-
-    // delete comment
-    public void deleteComment(Comment com) {
-        comments.remove(com);
-        com.setPost(null);
-    }
-
+    private Instant createdAt;
 }

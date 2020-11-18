@@ -1,7 +1,8 @@
 package com.gamepixel.api.service;
 
 import com.gamepixel.api.models.Gamer;
-import com.gamepixel.api.repository.GamerRepo;
+import com.gamepixel.api.repository.GamerRepository;
+
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,14 +21,17 @@ import java.util.Optional;
 @AllArgsConstructor
 public class JwtUserDetailsService implements UserDetailsService {
 
-    private final GamerRepo userRepository;
+    private final GamerRepository userRepository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Gamer> userOptional = userRepository.findByUsername(username);
-        Gamer user = userOptional.orElseThrow(() -> new UsernameNotFoundException("No user found with username: "+ username));
-        return new org.springframework.security.core.userdetails.User(
-                user.getUsername(), user.getPassword(),  getAuthorities("USER"));
+        Gamer user = userOptional
+                .orElseThrow(() -> new UsernameNotFoundException("No user found with username: " + username));
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+                getAuthorities("USER"));
     }
+
     private Collection<? extends GrantedAuthority> getAuthorities(String role) {
         return Collections.singletonList(new SimpleGrantedAuthority(role));
     }

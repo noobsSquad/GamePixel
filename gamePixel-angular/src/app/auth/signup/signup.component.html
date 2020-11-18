@@ -2,10 +2,10 @@
 
 <div class="container">
   <!--Form Fields(row)-->
-  <form >
+  <form [formGroup] = "signupForm", (ngSubmit) = signup()  >
     <div class="form-row justify-content-center">
       <div class="form-group col-md-3 col-lg-3">
-        <label for="first-name">First Name:</label>
+        <label for="name">First Name:</label>
         <input
           type="text"
           class="form-control"
@@ -14,7 +14,7 @@
         />
       </div>
       <div class="form-group col-md-3">
-        <label for="last-name">Last Name:</label>
+        <label for="name">Last Name:</label>
         <input
           type="text"
           class="form-control"
@@ -33,7 +33,7 @@
       />
     </div>
     <div class="form-group offset-md-3">
-      <label for="user-name">Username:</label>
+      <label for="user">Username:</label>
       <input
         type="text"
         class="form-control"
@@ -46,7 +46,7 @@
       <input
         type="password"
         class="form-control"
-        id="pwId1"
+        id="password1"
         placeholder="Enter Password"
       />
     </div>
@@ -55,7 +55,7 @@
       <input
         type="password"
         class="form-control"
-        id="pwId2"
+        id="password2"
         placeholder="Re-enter Password"
       />
     </div>
@@ -65,11 +65,7 @@
   >
     Create Account
   </button>
-<<<<<<< HEAD
-  <a routerLink="/login">Already have an account?</a>
-=======
+  <!--<a routerLink="/login">Already have an account?</a>-->
   </form>
-  
   <a href="/login">Already have an account?</a>
->>>>>>> 3f00a3b54bbbb08a72a2bdc2af456c1f70db5453
 </div>

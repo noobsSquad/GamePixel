@@ -1,6 +1,6 @@
 package com.gamepixel.api.mapper;
 
-import com.gamepixel.api.dto.RegisterRequest;
+import com.gamepixel.api.dto.auth.RegisterRequest;
 import com.gamepixel.api.models.Gamer;
 
 import org.mapstruct.Mapper;
