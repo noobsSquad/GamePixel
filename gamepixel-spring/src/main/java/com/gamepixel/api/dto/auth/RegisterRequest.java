@@ -1,4 +1,4 @@
-package com.gamepixel.api.dto;
+package com.gamepixel.api.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

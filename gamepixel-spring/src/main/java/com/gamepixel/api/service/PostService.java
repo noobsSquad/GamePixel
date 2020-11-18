@@ -1,19 +1,16 @@
 package com.gamepixel.api.service;
 
-import com.gamepixel.api.dto.PostRequest;
-import com.gamepixel.api.dto.PostResponse;
+import com.gamepixel.api.dto.post.PostRequest;
+import com.gamepixel.api.dto.post.PostResponse;
 import com.gamepixel.api.exceptions.PostNotFoundException;
 import com.gamepixel.api.exceptions.TagNotFoundException;
-import com.gamepixel.api.exceptions.UserNotFoundException;
 import com.gamepixel.api.mapper.PostMapper;
 import com.gamepixel.api.models.Post;
 import com.gamepixel.api.models.Tag;
-import com.gamepixel.api.models.User;
 import com.gamepixel.api.repository.PostRepository;
 import com.gamepixel.api.repository.TagRepository;
 import com.gamepixel.api.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -28,14 +25,14 @@ public class PostService {
     private final AuthService authService;
     private final UserRepository userRepository;
 
-    public void save(PostRequest postRequest){
+    public void save(PostRequest postRequest) {
         Set<Tag> tags = new HashSet<>();
         Iterator<String> it = postRequest.getTags().iterator();
-        while(it.hasNext()){
+        while (it.hasNext()) {
             Tag tag = tagRepository.findByName(it.next()).orElse(new Tag()); // tagRepository.save(newTag())
             tags.add(tag);
         }
-         postRepository.save(postMapper.map(postRequest,tags,authService.getCurrentUser()));
+        postRepository.save(postMapper.map(postRequest, tags, authService.getCurrentUser()));
     }
 
     public PostResponse getPost(Long id) {
@@ -53,15 +50,15 @@ public class PostService {
                 .collect(Collectors.toList());
     }
 
-//    public List<PostResponse> getPostByUsername(String username){
+    //    public List<PostResponse> getPostByUsername(String username){
 //        User user = userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException("User Not found!"));
 //        return postRepository.findByUser(user)
 //                .stream().map(postMapper::mapToDto)
 //                .collect(Collectors.toList());
 //    }
-    public List<PostResponse> getPostsByTag(String tagName){
+    public List<PostResponse> getPostsByTag(String tagName) {
         Tag tag = tagRepository.findByName(tagName)
-                .orElseThrow(() -> new TagNotFoundException("Tag: "+ tagName + " not found"));
+                .orElseThrow(() -> new TagNotFoundException("Tag: " + tagName + " not found"));
         List<Post> posts = postRepository.findAllByTags(tag);
         return posts.stream().map(postMapper::mapToDto).collect(Collectors.toList());
     }

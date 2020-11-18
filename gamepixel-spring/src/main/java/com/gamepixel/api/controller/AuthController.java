@@ -1,9 +1,10 @@
 package com.gamepixel.api.controller;
 
-import com.gamepixel.api.dto.AuthenticationResponse;
+
 import com.gamepixel.api.dto.RefreshTokenRequest;
-import com.gamepixel.api.dto.LoginRequest;
-import com.gamepixel.api.dto.RegisterRequest;
+import com.gamepixel.api.dto.auth.AuthenticationResponse;
+import com.gamepixel.api.dto.auth.LoginRequest;
+import com.gamepixel.api.dto.auth.RegisterRequest;
 import com.gamepixel.api.service.AuthService;
 
 import com.gamepixel.api.service.RefreshTokenService;
@@ -11,8 +12,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.Instant;
 
 /**
  * POST - add gamer to db GET - retrieving all gamers GET - retrieving specified

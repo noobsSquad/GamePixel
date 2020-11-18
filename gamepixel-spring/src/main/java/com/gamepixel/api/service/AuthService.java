@@ -1,15 +1,18 @@
 package com.gamepixel.api.service;
 
-import com.gamepixel.api.dto.AuthenticationResponse;
-import com.gamepixel.api.dto.LoginRequest;
+
 import com.gamepixel.api.dto.RefreshTokenRequest;
-import com.gamepixel.api.dto.RegisterRequest;
+import com.gamepixel.api.dto.auth.AuthenticationResponse;
 import com.gamepixel.api.exceptions.UserNotFoundException;
 import com.gamepixel.api.repository.UserRepository;
 import com.gamepixel.api.security.JwtTokenUtil;
-import com.gamepixel.api.exceptions.GamerExistsException;
 import com.gamepixel.api.mapper.SignUpMapper;
 import com.gamepixel.api.models.User;
+
+
+import com.gamepixel.api.dto.auth.LoginRequest;
+import com.gamepixel.api.dto.auth.RegisterRequest;
+
 import com.gamepixel.api.repository.VerificationTokenRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -30,6 +33,7 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class AuthService {
+
 
     private final UserRepository userRepository; // to add new gamer or check login gamer
     private final VerificationTokenRepo verificationTokenRepo; // to add token to repo

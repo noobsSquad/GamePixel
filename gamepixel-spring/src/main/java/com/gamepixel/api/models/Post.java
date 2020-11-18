@@ -8,9 +8,7 @@ import org.springframework.lang.Nullable;
 import javax.persistence.*;
 
 import java.time.Instant;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
@@ -28,7 +26,6 @@ public class Post {
     private String content;
     private Integer voteCount;
     private Date modified;
-
     private Instant createdOn;
 
     @ManyToMany(fetch = LAZY,cascade = CascadeType.ALL)
@@ -36,5 +33,13 @@ public class Post {
     joinColumns = @JoinColumn(name = "post_id"),
     inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private Set<Tag> tags = new HashSet<>();
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    private List<Comment> comments = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
 
 }

@@ -1,17 +1,14 @@
 package com.gamepixel.api.mapper;
 
 
-import com.gamepixel.api.dto.PostRequest;
-import com.gamepixel.api.dto.PostResponse;
+import com.gamepixel.api.dto.post.PostRequest;
+import com.gamepixel.api.dto.post.PostResponse;
 import com.gamepixel.api.models.Post;
 import com.gamepixel.api.models.Tag;
 import com.gamepixel.api.models.User;
-import com.gamepixel.api.repository.TagRepository;
 import com.gamepixel.api.service.AuthService;
-import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Set;

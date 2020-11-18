@@ -2,6 +2,7 @@ package com.gamepixel.api.service;
 
 import com.gamepixel.api.models.User;
 import com.gamepixel.api.repository.UserRepository;
+
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -25,7 +26,9 @@ public class JwtUserDetailsService implements UserDetailsService {
         User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("No user found with username: "+ username));
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(), user.getPassword(),  getAuthorities("USER"));
+
     }
+
     private Collection<? extends GrantedAuthority> getAuthorities(String role) {
         return Collections.singletonList(new SimpleGrantedAuthority(role));
     }

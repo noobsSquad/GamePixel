@@ -1,4 +1,4 @@
-package com.gamepixel.api.dto;
+package com.gamepixel.api.dto.post;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

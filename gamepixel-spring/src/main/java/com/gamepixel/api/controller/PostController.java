@@ -1,7 +1,7 @@
 package com.gamepixel.api.controller;
 
-import com.gamepixel.api.dto.PostRequest;
-import com.gamepixel.api.dto.PostResponse;
+import com.gamepixel.api.dto.post.PostRequest;
+import com.gamepixel.api.dto.post.PostResponse;
 import com.gamepixel.api.service.PostService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -20,14 +20,5 @@ public class VideoGames {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     Long id;
-    @NonNull
     private String title;
-    private String genre;
-    private Integer rating;
-    private Date releasedDate;
-    private String developers;
-    private String publishers;
-    // videos are in which platforms? // removing a game shouldn't remove a platform
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    List<Platform> platforms;
 }

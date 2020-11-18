@@ -1,4 +1,4 @@
-package com.gamepixel.api.dto;
+package com.gamepixel.api.dto.post;
 
 import com.gamepixel.api.models.Tag;
 import lombok.AllArgsConstructor;

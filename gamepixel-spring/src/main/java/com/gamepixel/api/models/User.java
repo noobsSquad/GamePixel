@@ -8,9 +8,7 @@ import javax.persistence.*;
 import java.time.Instant;
 import java.util.UUID;
 
-/**
- * Gamer Entity + user_id + firstName + lastName + email + username + password
- */
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,7 +18,7 @@ public class User {
     @Column
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long Id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -35,4 +33,8 @@ public class User {
     private String username;
 
     private String password;
+
+    @Column(name = "user_created")
+    private Instant createdOn;
+
 }

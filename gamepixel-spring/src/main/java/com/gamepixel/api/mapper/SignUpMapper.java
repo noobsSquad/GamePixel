@@ -1,11 +1,11 @@
 package com.gamepixel.api.mapper;
 
-import com.gamepixel.api.dto.RegisterRequest;
+
+import com.gamepixel.api.dto.auth.RegisterRequest;
 
 import com.gamepixel.api.models.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
 
