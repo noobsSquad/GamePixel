@@ -10,5 +10,8 @@ import java.io.Serializable;
 public class JwtResponse implements Serializable {
 
     private final String jwtToken;
+    //private final Instant createdOn;
+    //private final Instant ExpiredAt;
+    //private final String username;
 
 }

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.gamepixel.api.dto.RegisterRequest;
-import com.gamepixel.api.models.Gamer;
+import com.gamepixel.api.models.User;
 
 import org.junit.Test;
 
@@ -19,7 +19,7 @@ public class SignUpMapperTest {
         req.setUsername("jdoe123");
         req.setPassword("test123");
 
-        Gamer gamer = SignUpMapper.INSTANCE.mapSignUp(req);
+        User gamer = SignUpMapper.INSTANCE.mapSignUp(req);
 
         assertNotNull(gamer);
         assertEquals(req.getFirstName(), gamer.getFirstName());

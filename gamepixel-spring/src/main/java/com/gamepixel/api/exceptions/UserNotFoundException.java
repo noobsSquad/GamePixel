@@ -2,7 +2,7 @@ package com.gamepixel.api.exceptions;
 
 //Serial id
 
-public class GamerNotFoundException extends RuntimeException {
+public class UserNotFoundException extends RuntimeException {
     /**
      *
      */
@@ -14,7 +14,7 @@ public class GamerNotFoundException extends RuntimeException {
      */
     // private static final long serialVersionUID = 2404001185162478098L;
 
-    public GamerNotFoundException(String msg) {
+    public UserNotFoundException(String msg) {
         super(msg);
     }
 }

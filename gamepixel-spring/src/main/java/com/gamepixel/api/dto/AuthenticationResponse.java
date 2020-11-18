@@ -12,8 +12,8 @@ import java.time.Instant;
 @NoArgsConstructor
 @Builder
 public class AuthenticationResponse {
-    private String authenticationToken;
-    private String username;
+    private String authenticationToken; //BEARER TOKEN
+    private String username; // USERNAME
     private String refreshToken; // to be used with JWT
-    private Instant expiresAt;
+    private Instant expiresAt; //expires at
 }
