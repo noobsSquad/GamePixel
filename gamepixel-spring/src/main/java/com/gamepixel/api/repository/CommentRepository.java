@@ -2,10 +2,10 @@ package com.gamepixel.api.repository;
 
 import java.util.List;
 
-import com.gamepixel.api.models.Comment;
-import com.gamepixel.api.models.Post;
+import com.gamepixel.api.models.auth.User;
+import com.gamepixel.api.models.content.Comment;
+import com.gamepixel.api.models.content.Post;
 
-import com.gamepixel.api.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

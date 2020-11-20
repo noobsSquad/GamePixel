@@ -1,6 +1,6 @@
 package com.gamepixel.api.service;
 
-import com.gamepixel.api.models.User;
+import com.gamepixel.api.models.auth.User;
 import com.gamepixel.api.repository.UserRepository;
 
 import lombok.AllArgsConstructor;
@@ -20,12 +20,14 @@ import java.util.Optional;
 public class JwtUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> userOptional = userRepository.findByUsername(username);
-        User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("No user found with username: "+ username));
-        return new org.springframework.security.core.userdetails.User(
-                user.getUsername(), user.getPassword(),  getAuthorities("USER"));
+        User user = userOptional
+                .orElseThrow(() -> new UsernameNotFoundException("No user found with username: " + username));
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+                getAuthorities("USER"));
 
     }
 

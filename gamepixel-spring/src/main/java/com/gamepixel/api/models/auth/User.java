@@ -1,4 +1,4 @@
-package com.gamepixel.api.models;
+package com.gamepixel.api.models.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.Instant;
 import java.util.UUID;
-
 
 @Data
 @AllArgsConstructor

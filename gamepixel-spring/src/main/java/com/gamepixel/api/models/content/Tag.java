@@ -1,4 +1,4 @@
-package com.gamepixel.api.models;
+package com.gamepixel.api.models.content;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,19 +6,24 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.Instant;
+import javax.persistence.ManyToMany;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class RefreshToken {
+public class Tag {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
-    private String token;
-    private Instant createdDate;
+
+    private String name;
+
+    @ManyToMany(mappedBy = "tags")
+    private Set<Post> posts = new HashSet<>();
 
 }

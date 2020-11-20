@@ -3,7 +3,7 @@ package com.gamepixel.api.mapper;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import com.gamepixel.api.dto.auth.RegisterRequest;
-import com.gamepixel.api.models.User;
+import com.gamepixel.api.models.auth.User;
 
 import org.junit.Test;
 
