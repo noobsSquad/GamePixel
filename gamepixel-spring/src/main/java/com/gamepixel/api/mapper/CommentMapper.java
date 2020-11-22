@@ -1,9 +1,9 @@
 package com.gamepixel.api.mapper;
 
-import com.gamepixel.api.dto.CommentDto;
-import com.gamepixel.api.models.Comment;
-import com.gamepixel.api.models.User;
-import com.gamepixel.api.models.Post;
+import com.gamepixel.api.dto.comment.CommentDto;
+import com.gamepixel.api.models.content.Comment;
+import com.gamepixel.api.models.auth.User;
+import com.gamepixel.api.models.content.Post;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -22,10 +22,10 @@ public interface CommentMapper {
 
     // Comment Response Mapper
     @Mapping(ignore = true, target = "id")
-    @Mapping(source = "commentDto.review", target = "review")
+    @Mapping(source = "commentDto.content", target = "content")
     @Mapping(source = "post", target = "post")
     @Mapping(source = "user", target = "user")
-    @Mapping(expression = "java(java.time.Instant.now())", target = "createdAt")
+    @Mapping(expression = "java(java.time.Instant.now())", target = "createdOn")
     Comment map(CommentDto commentDto, User user, Post post);
 
 }

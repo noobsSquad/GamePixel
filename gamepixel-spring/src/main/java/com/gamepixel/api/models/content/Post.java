@@ -1,11 +1,12 @@
-package com.gamepixel.api.models;
+package com.gamepixel.api.models.content;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+
+import com.gamepixel.api.models.auth.User;
 
 import java.time.Instant;
 import java.util.*;
@@ -28,18 +29,14 @@ public class Post {
     private Date modified;
     private Instant createdOn;
 
-    @ManyToMany(fetch = LAZY,cascade = CascadeType.ALL)
-    @JoinTable(name = "post_tag",
-    joinColumns = @JoinColumn(name = "post_id"),
-    inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    @ManyToMany(fetch = LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "post_tag", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private Set<Tag> tags = new HashSet<>();
-
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
     private List<Comment> comments = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
-
 
 }

@@ -1,12 +1,11 @@
 package com.gamepixel.api.dto.post;
 
-import com.gamepixel.api.models.Tag;
+import com.gamepixel.api.models.content.Tag;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Set;
-
 
 @Data
 @AllArgsConstructor
@@ -18,7 +17,7 @@ public class PostResponse {
     private String content;
     private String username;
     private Set<Tag> tags; // as string as an array as set -> [FPS] [tag] [tag] "
-//    private String tags;
+    // private String tags;
 
     private Integer voteCount;
 

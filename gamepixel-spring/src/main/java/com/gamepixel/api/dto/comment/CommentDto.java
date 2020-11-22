@@ -1,4 +1,4 @@
-package com.gamepixel.api.dto;
+package com.gamepixel.api.dto.comment;
 
 import java.time.Instant;
 
@@ -13,6 +13,6 @@ public class CommentDto {
     private Long id;
     private Long postId;
     private String username;
-    private String review;
+    private String content;
     private Instant createdAt;
 }

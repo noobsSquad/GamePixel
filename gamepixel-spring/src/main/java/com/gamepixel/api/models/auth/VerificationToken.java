@@ -1,4 +1,4 @@
-package com.gamepixel.api.models;
+package com.gamepixel.api.models.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

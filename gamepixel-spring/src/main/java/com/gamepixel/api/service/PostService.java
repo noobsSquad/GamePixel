@@ -5,8 +5,8 @@ import com.gamepixel.api.dto.post.PostResponse;
 import com.gamepixel.api.exceptions.PostNotFoundException;
 import com.gamepixel.api.exceptions.TagNotFoundException;
 import com.gamepixel.api.mapper.PostMapper;
-import com.gamepixel.api.models.Post;
-import com.gamepixel.api.models.Tag;
+import com.gamepixel.api.models.content.Post;
+import com.gamepixel.api.models.content.Tag;
 import com.gamepixel.api.repository.PostRepository;
 import com.gamepixel.api.repository.TagRepository;
 import com.gamepixel.api.repository.UserRepository;
@@ -36,26 +36,23 @@ public class PostService {
     }
 
     public PostResponse getPost(Long id) {
-        Post post = postRepository.findById(id)
-                .orElseThrow(() -> new PostNotFoundException(id.toString()));
+        Post post = postRepository.findById(id).orElseThrow(() -> new PostNotFoundException(id.toString()));
         return postMapper.mapToDto(post);
     }
 
     public List<PostResponse> getAllPosts() {
-        //find all posts, stream ,map with the function mapToDto in postMapper, and add them to a list
-        return postRepository
-                .findAll()
-                .stream()
-                .map(postMapper::mapToDto)
-                .collect(Collectors.toList());
+        // find all posts, stream ,map with the function mapToDto in postMapper, and add
+        // them to a list
+        return postRepository.findAll().stream().map(postMapper::mapToDto).collect(Collectors.toList());
     }
 
-    //    public List<PostResponse> getPostByUsername(String username){
-//        User user = userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException("User Not found!"));
-//        return postRepository.findByUser(user)
-//                .stream().map(postMapper::mapToDto)
-//                .collect(Collectors.toList());
-//    }
+    // public List<PostResponse> getPostByUsername(String username){
+    // User user = userRepository.findByUsername(username).orElseThrow(() -> new
+    // UserNotFoundException("User Not found!"));
+    // return postRepository.findByUser(user)
+    // .stream().map(postMapper::mapToDto)
+    // .collect(Collectors.toList());
+    // }
     public List<PostResponse> getPostsByTag(String tagName) {
         Tag tag = tagRepository.findByName(tagName)
                 .orElseThrow(() -> new TagNotFoundException("Tag: " + tagName + " not found"));

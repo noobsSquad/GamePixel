@@ -1,5 +1,7 @@
 package com.gamepixel.api.controller;
 
+import com.gamepixel.api.service.AuthService;
+
 // import static org.mockito.ArgumentMatchers.any;
 // import static org.mockito.Mockito.when;
 // 
@@ -8,37 +10,33 @@ package com.gamepixel.api.controller;
 // import com.gamepixel.api.service.GamerService;
 
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
-
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
 public class AuthControllerTest {
 
-    AuthController gamerController;
+    @InjectMocks
+    AuthController authController;
 
-    // @Test
-    /*
-     * public void addGamerTest() { MockHttpServletRequest req = new
-     * MockHttpServletRequest(); RequestContextHolder.setRequestAttributes(new
-     * ServletRequestAttributes(req));
-     * 
-     * when(gamerService.createGamer(any(Gamer.class))).thenReturn(true);
-     * 
-     * Gamer testGamer = new Gamer(1, "John", "Doe", "jdoe123@mail.com", "jdoe21",
-     * "qwerty12345"); ResponseEntity<Object> responseEntity =
-     * gamerController.addGamer(testGamer);
-     * 
-     * // assertThat(responseEntity.getStatusCodeValue()).isEqualTo(201); //
-     * assertEquals(responseEntity.getHeaders().getLocation().getPath(), "/1"); }
-     */
+    @Mock
+    AuthService authService;
+
+    @BeforeEach
+    public void init() {
+        MockitoAnnotations.initMocks(this);
+
+    }
 
     @Test
-    public void getGamerTest() {
+    public void testSignUp() {
 
     }
 

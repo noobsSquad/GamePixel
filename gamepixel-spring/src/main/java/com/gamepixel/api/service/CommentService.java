@@ -3,7 +3,7 @@ package com.gamepixel.api.service;
 import java.util.List;
 
 import com.gamepixel.api.dto.CommentDto;
-import com.gamepixel.api.models.User;
+import com.gamepixel.api.models.auth.User;
 import com.gamepixel.api.repository.CommentRepository;
 
 import com.gamepixel.api.repository.UserRepository;
