@@ -4,6 +4,8 @@ import com.gamepixel.api.dto.post.PostRequest;
 import com.gamepixel.api.dto.post.PostResponse;
 import com.gamepixel.api.service.PostService;
 import lombok.AllArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,8 @@ import static org.springframework.http.ResponseEntity.status;
 @AllArgsConstructor
 @RequestMapping("/api/posts")
 public class PostController {
+    
+    @Autowired
     private final PostService postService;
 
 

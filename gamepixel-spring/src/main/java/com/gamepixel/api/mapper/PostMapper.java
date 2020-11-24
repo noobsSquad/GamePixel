@@ -14,6 +14,7 @@ import java.util.Set;
 
 @Mapper(componentModel = "spring")
 public abstract class PostMapper {
+    
     @Autowired
     private AuthService authService; // to get User from context holder
 

@@ -2,6 +2,7 @@ package com.gamepixel.api.models.content;
 
 import java.time.Instant;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,7 +30,7 @@ public class Comment {
 
     private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) 
     private Post post;
 
     @ManyToOne(fetch = FetchType.LAZY)

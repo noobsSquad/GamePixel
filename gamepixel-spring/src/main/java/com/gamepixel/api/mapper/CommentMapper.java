@@ -9,10 +9,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CommentMapper {
-
-    CommentMapper COMM = Mappers.getMapper(CommentMapper.class);
 
     // Grab the gamer's Id from the post -> CommentDto's postId
     // Grab gamer's username -> CommentDto's username

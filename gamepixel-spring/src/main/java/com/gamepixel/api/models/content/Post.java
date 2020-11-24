@@ -23,10 +23,10 @@ public class Post {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     private String title;
-    private String url;
+    //private String url;
     private String content;
-    private Integer voteCount;
-    private Date modified;
+    //private Integer voteCount;
+    private Instant modified;
     private Instant createdOn;
 
     @ManyToMany(fetch = LAZY, cascade = CascadeType.ALL)
