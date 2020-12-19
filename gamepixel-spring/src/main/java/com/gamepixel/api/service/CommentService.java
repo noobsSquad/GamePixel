@@ -9,11 +9,12 @@ import com.gamepixel.api.exceptions.UserNotFoundException;
 import com.gamepixel.api.mapper.CommentMapper;
 import com.gamepixel.api.models.auth.User;
 import com.gamepixel.api.models.content.Comment;
+// import com.gamepixel.api.models.content.Comment;
 import com.gamepixel.api.models.content.Post;
 import com.gamepixel.api.repository.CommentRepository;
 import com.gamepixel.api.repository.PostRepository;
 import com.gamepixel.api.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
@@ -72,8 +73,7 @@ public class CommentService {
 
     // delete comment from post
     public void deleteCommentByPost(Long postId) {
-        Post post = postRepository.findById(postId)
-            .orElseThrow(() -> new PostNotFoundException("Post not found"));
+       
         
     }
 

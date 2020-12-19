@@ -92,7 +92,7 @@ public class AuthServiceTest {
     void testSignUp_throwsGamerExistException() throws UserExistsException {
         when(userRepository.findByUsername(anyString())).thenReturn(Optional.of(mockUser));
         userDto = new RegisterRequest();
-        userDto.setFirstName("john");
+        userDto.setFirstName("firstName");
         userDto.setLastName("doe");
         userDto.setEmail("test@test.com");
         userDto.setUsername("qwer");
@@ -103,21 +103,21 @@ public class AuthServiceTest {
         });
     }
 
-    @Test
-    void testLogin() {
+    // @Test
+    // void testLogin() {
 
-    }
+    // }
 
-    // refreshing Token test
-    @Test
-    void testRefreshToken() {
+    // // refreshing Token test
+    // @Test
+    // void testRefreshToken() {
 
-    }
+    // }
 
-    // get current user test
-    @Test
-    void testGetCurrentUser() {
+    // // get current user test
+    // @Test
+    // void testGetCurrentUser() {
 
-    }
+    // }
 
 }

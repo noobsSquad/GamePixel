@@ -19,9 +19,13 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     List<Comment> findAllByUser(User user);
 
+    
+    
     @Modifying
     @Query("UPDATE comment c SET c.content = ?1, c.createdOn = ?2 WHERE c.id = ?3")
     Comment updateComment(String content, Instant createdOn , Long id);
+
+
     
     
 }
